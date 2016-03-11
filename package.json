@@ -1,0 +1,12 @@
+{
+  "name": "NodeJS-Server",
+  "description": "Node.js simple application",
+  "version": "0.0.1",
+  "dependencies": {
+    "express": "*",
+    "lodash": "*",
+    "winston": "*",
+    "express-winston": "*",
+    "body-parser": "*"
+  }
+}
