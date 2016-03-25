@@ -1,12 +1,5 @@
 /*jshint -W080 */
 var nconf = require('nconf').argv().env();
-if (process.env.NODE_ENV !== 'production') {
-  nconf.defaults({
-    'TEST_INTEGRATOR_EXTENSION_PORT': 7000,
-    "TEST_INTEGRATOR_EXTENSION_BEARER_TOKEN": "TEST_INTEGRATOR_EXTENSION_BEARER_TOKEN",
-    "INTEGRATOR_EXTENSION_SYSTEM_TOKEN": "TEST_INTEGRATOR_EXTENSION_SYSTEM_TOKEN"
-  });
-}
 
 // Important: Remove default limit of 5
 var http = require('http')
@@ -14,27 +7,29 @@ http.globalAgent.maxSockets = Infinity
 var https = require('https')
 https.globalAgent.maxSockets = Infinity
 
-var _ = require('lodash')
-  , express = require('express')
-  , app = express()
-  , logger = require('winston')
-  , expressWinston = require('express-winston')
-  , bodyParser = require('body-parser')
+var _ = require('lodash');
+var express = require('express');
+var app = express();
+var logger = require('winston');
+var expressWinston = require('express-winston');
+var bodyParser = require('body-parser');
+
+var port = 80;
 
 // configure logging.  pretty ugly code but dont know better way yet
-var fileTransportOpts =
-  { filename: './server.log',
-    maxsize: 10000000,
-    maxFiles: 2,
-    json: false,
-    handleExceptions: (process.env.NODE_ENV === 'production')
-  }
+var fileTransportOpts = {
+  filename: './server.log',
+  maxsize: 10000000,
+  maxFiles: 2,
+  json: false,
+  handleExceptions: (process.env.NODE_ENV === 'production')
+};
 
-var consoleTransportOpts =
-  { colorize: true,
-    timestamp :true,
-    prettyPrint: true
-  }
+var consoleTransportOpts = {
+  colorize: true,
+  timestamp :true,
+  prettyPrint: true
+};
 
 var fileTransport = new logger.transports.DailyRotateFile(fileTransportOpts)
 var consoleTransport = new logger.transports.Console(consoleTransportOpts)
@@ -96,3 +91,7 @@ app.get('/healthCheck', function (req, res) {
 app.get('/envvar', function (req, res) {
   res.send('Environment variable value: ' + process.env.TEST_VAR)
 })
+
+var server = app.listen(port, function () {
+  logger.info('simple server listening on port ' + port);
+});
