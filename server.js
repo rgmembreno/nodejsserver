@@ -1,6 +1,3 @@
-/*jshint -W080 */
-var nconf = require('nconf').argv().env();
-
 // Important: Remove default limit of 5
 var http = require('http')
 http.globalAgent.maxSockets = Infinity
