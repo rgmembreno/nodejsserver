@@ -1,12 +1,14 @@
 {
   "name": "NodeJS-Server",
   "description": "Node.js simple application",
-  "version": "0.0.1",
+  "version": "0.0.2",
+  "main": "server.js",
+  "engines": {
+    "node": "0.12.x"
+  },
+  "private": true,
   "dependencies": {
-    "express": "*",
-    "lodash": "*",
-    "winston": "*",
-    "express-winston": "*",
-    "body-parser": "*"
+    "express": "4.12.3",
+    "winston": "0.7.3"
   }
 }
