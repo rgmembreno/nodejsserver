@@ -4,6 +4,8 @@ var logger = require('winston');
 
 var port = 80;
 
+var nconf = require('nconf').argv().env();
+
 //routes
 app.get('/', function (req, res) {
   res.send('I am doing good!')
