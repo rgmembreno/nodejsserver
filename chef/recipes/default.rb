@@ -7,7 +7,6 @@ bash "check_node_is_running" do
       'ps aux | grep node'
   EOH
 end
-
 Chef::Log.info("ServerStart  " + serverstart)
 Chef::Log.info("nodeRunning  " + nodeRunning)
 Chef::Log.info("Deployment succeeded")
