@@ -4,7 +4,7 @@ nodeRunning = ''
 bash "check_node_is_running" do
   user "root"
   code <<-EOH
-    nodeRunning = 'ps aux | grep node'
+      'ps aux | grep node'
   EOH
 end
 
