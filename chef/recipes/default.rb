@@ -4,10 +4,9 @@ class MyError < StandardError; end
 
 x = false
 
-execute "check_node_is_running" do
-  user "root"
+ruby_block "check_node_is_running" do
   x = true
-  not_if false
+  not_if '/usr/bin/pgrep node | wc -l'
 end
 
 Chef::Log.info("Test: #{x}")
