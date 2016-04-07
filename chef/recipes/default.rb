@@ -1,12 +1,11 @@
 Chef::Log.info("Verifying deployment was successful.")
 
 
-http_request 'get local healthCheck' do
-  message ''
-  url 'http://couchdb.apache.org/img/sketch.png'
-  action :get
-  end
-  notifies :create, 'remote_file[/tmp/couch.png]', :immediately
+bash "check_node_is_running" do
+  user "root"
+  code <<-EOH
+    /usr/bin/pgrep node
+  EOH
 end
 
 Chef::Log.info("Deployment succeeded")
