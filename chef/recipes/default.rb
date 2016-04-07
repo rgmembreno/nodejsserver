@@ -1,9 +1,11 @@
 Chef::Log.info("Verifying deployment was successful.")
 
+class MyError < StandardError; end
+
 
 bash "check_node_is_running" do
   user "root"
-  fail CustomError, "node is running"
+  fail MyError, "node is running"
   only_if '/usr/bin/pgrep node'
 end
 
