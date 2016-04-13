@@ -6,7 +6,7 @@ x = false
 ruby_block "check_node_is_running" do
     require 'mixlib/shellout'
 
-    pgrep_command = Mixlib::ShellOut.new("usr/bin/pgrep node | wc -l")
+    pgrep_command = Chef::Mixin::ShellOut.new("usr/bin/pgrep node | wc -l")
 
     pgrep_command.run_command
     puts pgrep_command.stdout
