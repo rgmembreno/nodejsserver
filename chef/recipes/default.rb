@@ -6,7 +6,7 @@ class MyError < StandardError; end
 pgrep_command = ""
 pgrep_command << "/usr/bin/pgrep node | wc -l"
       
-      pgrep_command_out = Mixlib::ShellOut.new("#{command}")
+      pgrep_command_out = Mixlib::ShellOut.new("#{pgrep_command}")
       pgrep_command_out.run_command
       pgrep_command_out.error!
 
