@@ -7,10 +7,11 @@ x = false
 
 ruby_block "check_node_is_running" do
 
-Chef::Resource::RubyBlock.send(:include,Chef::Mixin::ShellOut)
 
-pgrep_command = '/usr/bin/pgrep node | wc -l'
+pgrep_command = Mixlib::ShellOut.new("usr/bin/pgrep node | wc -l")
+
       pgrep_command_out = shell_out(pgrep_command)
+      pgrep_command_out.run_command
       if pgrep_command_out.stdout == "0"
           fail MyError, "node is not running"
       end
