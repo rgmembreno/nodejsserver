@@ -19,7 +19,7 @@ Chef::Log.info("Falsy test: #{falsyTest}")
 falsyTest2 = (pgrep_command_out.stdout.to_s == "0")
 Chef::Log.info("Falsy test 2: #{falsyTest2}")
      
-      if pgrep_command_out.stdout == "0"
+      if pgrep_command_out.stdout[0] == "0"
           fail MyError, "node is not running"
       end
 
