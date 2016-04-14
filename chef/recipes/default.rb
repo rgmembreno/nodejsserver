@@ -11,10 +11,13 @@ pgrep_command << "/usr/bin/pgrep node | wc -l"
       pgrep_command_out.error!
 
     puts pgrep_command_out.stdout
-pgrep_command_out.stdout.each_codepoint  {|c| print c, ' ' }
+Chef::Log.info("pgrep out char 0 #{pgrep_command_out.stdout[0]}")
+Chef::Log.info("pgrep out char 1 #{pgrep_command_out.stdout[1]}")
 
+falsyTest = (pgrep_command_out.stdout[0] == "0")
+Chef::Log.info("Falsy test: #{falsyTest}")
      
-      if pgrep_command_out.stdout.to_s == "0\\x"
+      if pgrep_command_out.stdout.to_s == "0"
           fail MyError, "node is not running"
       end
 
