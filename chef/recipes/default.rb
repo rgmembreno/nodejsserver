@@ -12,7 +12,7 @@ pgrep_command << "/usr/bin/pgrep node | wc -l"
 
     puts pgrep_command_out.stdout.class
     puts pgrep_command_out.stdout.length
-      if pgrep_command_out.stdout.to_s =~ "0"
+      if pgrep_command_out.stdout.to_s == "0"
           fail MyError, "node is not running"
       end
 
