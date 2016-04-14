@@ -13,9 +13,8 @@ pgrep_command << "/usr/bin/pgrep node | wc -l"
     puts pgrep_command_out.stdout
 pgrep_command_out.stdout.each_codepoint  {|c| print c, ' ' }
 
-      pgrep_command_failed = 48
-      pgrep_command_failed << 10      
-      if pgrep_command_out.stdout.to_s == pgrep_command_failed
+     
+      if pgrep_command_out.stdout.to_s == "0\x"
           fail MyError, "node is not running"
       end
 
