@@ -1,4 +1,4 @@
-resource_name verify_deployment
+resource_name :verify_deployment
 
 
 load_current_value do
