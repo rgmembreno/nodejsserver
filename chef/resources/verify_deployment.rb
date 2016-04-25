@@ -1,12 +1,15 @@
+
 resource_name :verify_deployment
 
-property :pgrep_command, kind_of: String, name_property: true
-property :MyError, kind_of: MyError
+require 'mixlib/shellout'
+class MyError < StandardError; end
+
 
 action :run do
 
-    require 'mixlib/shellout'
-      
+    pgrep_command = ""
+    pgrep_command << "/usr/bin/pgrep node | wc -l"
+        
     pgrep_command_out = Mixlib::ShellOut.new("#{pgrep_command}")
     pgrep_command_out.run_command
     pgrep_command_out.error!
