@@ -1,8 +1,6 @@
 resource_name :verify_deployment
 
 
-load_current_value do
-end
 
 action :start do
 
