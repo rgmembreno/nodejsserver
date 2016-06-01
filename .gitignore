@@ -1,5 +1,6 @@
 /.project
 /node_modules
 /server.log.*
+/lawgs
 npm-debug.log
 /.jshintrc

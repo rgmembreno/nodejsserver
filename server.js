@@ -6,7 +6,7 @@ var bodyParser = require('body-parser');
 
 var port = 80;
 
- var nconf = require('nconf').argv().env();
+ // var nconf = require('nconf').argv().env();
 
 var fileTransportOpts = {
   filename: './server.log',
