@@ -10,7 +10,13 @@ node[:deploy].each do |application, deploy|
     block do
       Chef::Log.info("restart node.js via: #{node[:deploy][application][:nodejs][:restart_command]}")
       Chef::Log.info(`#{node[:deploy][application][:nodejs][:restart_command]}`)
-      $? == 0
+      if($? != 0)
+        Chef::Log.info('Failed to restart nodejs')
+        1 == 0
+      else
+        Chef::Log.info('nodejs started successfully')
+        1 == 1
+      end
     end
   end
 
