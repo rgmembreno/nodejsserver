@@ -6,7 +6,7 @@ var bodyParser = require('body-parser');
 
 var port = 80;
 
- var nconf = require('nconf').argv().env();
+ // var nconf = require('nconf').argv().env();
 
 var fileTransportOpts = {
   filename: './server.log',
@@ -57,7 +57,7 @@ app.get('/healthCheck', function (req, res) {
 })
 
 app.get('/envvar', function (req, res) {
-  res.send('Environment variable value: ' + process.env.TEST_VAR)
+  res.send('Environment variable value: ' + process.env.TEST_VAR + "," + process.env.NODE_ENV + "," + process.env.NODE_PROTECTED)
 })
 
 var server = app.listen(port, function () {
