@@ -1,12 +1,11 @@
-var express = require('express');
-var app = express();
-var logger = require('winston');
-var expressWinston = require('express-winston');
-var bodyParser = require('body-parser');
+var express = require('express')
+var app = express()
+var logger = require('winston')
+var expressWinston = require('express-winston')
+var bodyParser = require('body-parser')
+var nconf = require('nconf').argv().env()
 
-var port = 80;
-
- // var nconf = require('nconf').argv().env();
+var port = 80
 
 var fileTransportOpts = {
   filename: './server.log',
@@ -22,13 +21,13 @@ var consoleTransportOpts = {
   prettyPrint: true
 };
 
-var fileTransport = new logger.transports.DailyRotateFile(fileTransportOpts);
-var consoleTransport = new logger.transports.Console(consoleTransportOpts);
+var fileTransport = new logger.transports.DailyRotateFile(fileTransportOpts)
+var consoleTransport = new logger.transports.Console(consoleTransportOpts)
 
-expressWinston.requestWhitelist.splice(0, expressWinston.requestWhitelist.length);
-expressWinston.requestWhitelist.push('method');
-expressWinston.requestWhitelist.push('url');
-expressWinston.requestWhitelist.push('query');
+expressWinston.requestWhitelist.splice(0, expressWinston.requestWhitelist.length)
+expressWinston.requestWhitelist.push('method')
+expressWinston.requestWhitelist.push('url')
+expressWinston.requestWhitelist.push('query')
 
 var message = "{{res.statusCode}} HTTP {{req.method}} {{req.url}} {{res.responseTime}}ms"
 var expressWinstonLogger = expressWinston.logger({
@@ -43,14 +42,14 @@ var expressWinstonErrorLogger = expressWinston.errorLogger({
   meta: false
 });
 
-app.use(bodyParser.json());
-app.use(expressWinstonLogger);
-app.use(expressWinstonErrorLogger);
+app.use(bodyParser.json())
+app.use(expressWinstonLogger)
+app.use(expressWinstonErrorLogger)
 
 //routes
 app.get('/', function (req, res) {
   nconf.set('HELLO_WORLD', 'hello world!')
-  res.send('I am doing good, and I want to say ' + (nconf.get('HELLO_WORLD') || 'nothing!'))
+  res.send('I am doing good, and I want to say ' + nconf.get('THANKS') + ' for ' + (nconf.get('HELLO_WORLD') || 'nothing!'))
 })
 
 app.get('/healthCheck', function (req, res) {
@@ -62,5 +61,5 @@ app.get('/envvar', function (req, res) {
 })
 
 var server = app.listen(port, function () {
-  logger.info('simple server listening on port ' + port);
+  logger.info('simple server listening on port ' + port)
 });
