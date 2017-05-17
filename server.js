@@ -49,7 +49,7 @@ app.use(expressWinstonErrorLogger);
 
 //routes
 app.get('/', function (req, res) {
-  res.send('I am doing good again!')
+  res.send('I am doing good!')
 })
 
 app.get('/healthCheck', function (req, res) {
