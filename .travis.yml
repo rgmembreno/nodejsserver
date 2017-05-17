@@ -1,0 +1,8 @@
+sudo: false
+language: node_js
+node_js:
+- 0.12.7
+script:
+- make -f .travis test
+notifications:
+  webhooks: http://requestb.in/18uaooo1

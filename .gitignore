@@ -4,3 +4,6 @@
 /lawgs
 npm-debug.log
 /.jshintrc
+/chef
+/deploy
+/opsworks_nodejs
