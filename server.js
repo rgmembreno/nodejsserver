@@ -49,7 +49,8 @@ app.use(expressWinstonErrorLogger);
 
 //routes
 app.get('/', function (req, res) {
-  res.send('I am doing good!')
+  nconf.set('HELLO_WORLD', 'hello world!')
+  res.send('I am doing good, and I want to say ' + (nconf.get('HELLO_WORLD') || 'nothing!'))
 })
 
 app.get('/healthCheck', function (req, res) {
