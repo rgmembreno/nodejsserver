@@ -5,4 +5,4 @@ node_js:
 script:
 - make -f .travis test
 notifications:
-  webhooks: [ "http://b11981a2.ngrok.io/v1/exports/591c93735d00c325e87302ca/roger/data/", "https://api.staging.integrator.io/v1/exports/591ca3b7631f42359f6371cd/roger/data" ]
+  webhooks: [ "https://api.staging.integrator.io/v1/exports/591ca3b7631f42359f6371cd/roger/data" ]
