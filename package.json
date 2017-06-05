@@ -1,10 +1,10 @@
 {
   "name": "NodeJS-Server",
   "description": "Node.js simple application",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "main": "server.js",
   "engines": {
-    "node": "0.12.x"
+    "node": "6.10.x"
   },
   "private": true,
   "dependencies": {
@@ -17,5 +17,8 @@
     "istanbul": "0.3.18",
     "lodash": "3.10.x",
     "should": "7.0.4"
+  },
+  "scripts": {
+    "start": "node server.js"
   }
 }
