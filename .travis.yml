@@ -4,5 +4,3 @@ node_js:
 - 0.12.7
 script:
 - make -f .travis test
-notifications:
-  webhooks: [ "https://api.staging.integrator.io/v1/exports/591ca3b7631f42359f6371cd/roger/data" ]
