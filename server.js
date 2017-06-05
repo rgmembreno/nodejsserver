@@ -9,7 +9,7 @@ var checksigs = require('./checksigs')
 var port = 80
 if (process.env.ON_AWS !== 'yes') nconf.file('env.json')
 nconf.set('GOODDAY', 'hello')
-logger.info(nconf.get('GOODDAY') + ' ' + nconf.get('PERSON') + '!')
+var helloWorld = nconf.get('GOODDAY') + ' ' + nconf.get('PERSON') + '!'
 nconf.set('PUB_KEY_BASE', '-----BEGIN PUBLIC KEY-----\nMIIBIjgBNAkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvtjdLkS+FP+0fPC09j25\ny/PiuYDDivIT86COVedvlElk99BBYTrqNaJybxjXbIZ1Q6xFNhOY+iTcBr4E1zJu\ntizF3Xi0V9tOuP/M8Wn4Y/1lCWbQKlWrNQuqNBmhovF4K3mDCYswVbpgTmp+JQYu\nBm9QMdieZMNry5s6aiMA9aSjDlNyedvSENYo18F+NYg1J0C0JiPYTxheCb4optr1\n5xNzFKhAkuGs4XTOA5C7Q06GCKtDNf44s/CVE30KODUxBi0MCKaxiXw/yy55zxX2\n/YdGphIyQiA5iO1986ZmZCLLW8udz9uhW5jUr3Jlp9LbmphAC61bVSf4ou2YsJaN\n0QIDAQAB\n-----END PUBLIC KEY-----')
 logger.info('nconf was set in server js?', nconf.get('PUB_KEY_BASE') ? 'yes' : 'no')
 
@@ -55,7 +55,7 @@ app.use(expressWinstonErrorLogger)
 
 //routes
 app.get('/', function (req, res) {
-  res.send('I am doing something')
+  res.send('I am doing something...' + helloWorld)
 })
 
 app.get('/healthCheck', function (req, res) {
