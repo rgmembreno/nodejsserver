@@ -1,4 +1,4 @@
-var nconf = require('nconf').argv().env()
+var nconf = require('nconf')
 var util = require('util')
 var crypto = require('crypto')
 var logger = require('winston')

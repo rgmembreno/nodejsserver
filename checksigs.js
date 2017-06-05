@@ -1,4 +1,4 @@
-var nconf = require('nconf').argv().env()
+var nconf = require('nconf')
 var logger = require('winston')
 var verifysigs = require('./verifysigs')
 
